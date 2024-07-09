@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}{% block content %}
+
+    <h1 >{{post.title}}</h1>
+<div class="flex">
+    <p class="intro">{{post.intro}}</p>
+</div>
+    <a href="{% url 'delete' post.pk %}">削除する</a>
+    <small class="date">Posted at {{post.posted_date}}</small>
+    <br>
+    <a class="review" href="{% url 'review' post.pk %}">コメントする</a> 
+    <hr>
+    {% for review in post.review_set.all %}
+    <h3>{{ review.title }}</h3>
+    <p>{{ review.text }}</p>
+    <p>評価:{{ review.rate }}点</p>
+    <p>投稿ユーザー：{{ review.user.username }}</p>
+    <hr>
+  {% endfor %}
+    
+
+{% endblock %}

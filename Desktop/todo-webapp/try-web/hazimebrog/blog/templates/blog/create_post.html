@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}{% block content %}
+
+<h2>新しい投稿をする</h2>
+  <form method="post" enctype="multipart/form-data" action="{% url 'create_post' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Post</button>
+  </form>
+  <a href="{% url 'frontpage' %}">ホームに戻る</a>
+
+
+{% endblock %}
