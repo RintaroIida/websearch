@@ -1,11 +1,16 @@
 asgiref==3.7.2
+click==8.1.7
 distlib==0.3.8
 Django==4.2.9
 django-environ==0.11.2
 filelock==3.13.1
+gunicorn==23.0.0
+h11==0.14.0
+packaging==24.1
 pillow==10.2.0
 platformdirs==4.1.0
 sqlparse==0.4.4
 typing_extensions==4.9.0
+uvicorn==0.30.6
 views==0.3
 virtualenv==20.25.0
