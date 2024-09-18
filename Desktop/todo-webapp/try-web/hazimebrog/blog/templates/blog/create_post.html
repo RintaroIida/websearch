@@ -1,9 +1,11 @@
 {% extends "blog/base.html" %}{% block content %}
 
-<h2>新しい投稿をする</h2>
+<h2>タスク追加画面</h2>
+<div class="sign-form">
   <form method="post" enctype="multipart/form-data" action="{% url 'create_post' %}">
     {% csrf_token %}
     {{ form.as_p }}
+</div>
     <button type="submit">Create Post</button>
   </form>
   <a href="{% url 'frontpage' %}">ホームに戻る</a>

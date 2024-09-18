@@ -3,13 +3,9 @@
 {% block title %}レビュー投稿{% endblock %}
 {% block h1 %}レビュー投稿{% endblock %}
 {% block content %}
-<h2>コメントをする</h2>
+<h2>報告</h2>
     <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
         {% csrf_token %}
-        <label>
-            対象投稿
-        </label>
-        <input class="form-control" value="{{ blog.title }}" readonly>
         <label>
             タイトル
         </label>
@@ -18,17 +14,6 @@
             本文
         </label>
         <textarea class="form-control" name="text" rows="3"></textarea>
-        <label>
-            星の数
-        </label>
-        <select class="form-control" name="rate">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
         <input type="hidden" name="book" value="{{ blog.id }}">
         <button type="submit" class="btn btn-success mt-4">投稿する</button>
     </form>

@@ -4,7 +4,9 @@
 <div class="flex">
     <p class="intro">{{post.intro}}</p>
 </div>
-    <a href="{% url 'delete' post.pk %}">削除する</a>
+    <p class="execution_date">期日 : {{post.execution_date}}</p>
+    <a class="edit" href="{% url 'delete' post.pk %}">削除する</a>
+    <a class="edit" href="{% url 'update' post.pk %}">修正する</a>
     <small class="date">Posted at {{post.posted_date}}</small>
     <br>
     <a class="review" href="{% url 'review' post.pk %}">コメントする</a> 
@@ -12,8 +14,8 @@
     {% for review in post.review_set.all %}
     <h3>{{ review.title }}</h3>
     <p>{{ review.text }}</p>
-    <p>評価:{{ review.rate }}点</p>
-    <p>投稿ユーザー：{{ review.user.username }}</p>
+    
+    <p>報告者：{{ review.user.username }}</p>
     <hr>
   {% endfor %}
     

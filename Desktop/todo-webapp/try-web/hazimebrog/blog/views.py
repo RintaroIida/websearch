@@ -1,6 +1,4 @@
-from typing import Any
-from django.forms.models import BaseModelForm
-from django.http import HttpResponse
+
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Post, Review
@@ -9,7 +7,7 @@ from django.urls import reverse, reverse_lazy
 
 from .forms import PostForm
 
-from django.views.generic import CreateView, DetailView, DeleteView
+from django.views.generic import CreateView, DetailView, DeleteView, UpdateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -36,10 +34,10 @@ def create_post(request):
 
 
 
-
+#create postのボタンがホームに戻るとかぶってる
 class CreateReviewView(CreateView):
     model = Review
-    fields = ('book','title', 'text','rate')
+    fields = ('book','title', 'text')
     template_name = 'blog/review_form.html'
 
     def get_context_data(self, **kwargs):
@@ -59,6 +57,13 @@ class DeleteBlogView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('frontpage')
     model = Post
     template_name = 'blog/blog_confirm_delete.html'
+
+class UpdateBlogView(UpdateView):
+    model = Post
+    fields = ('title', 'intro','execution_date')
+    template_name = 'blog/blog_update.html'
+    success_url = reverse_lazy('frontpage')
+
         
 
 # Create your views here.

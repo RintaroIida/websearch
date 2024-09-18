@@ -1,25 +1,16 @@
 {% extends "blog/base.html" %}{% block content %}
 {% for post in posts %}
-
 <body>
-    <main>
-<div class="post block">
-    <h2 class="subtitle">{{post.title}}</h2>
-    <p>{{post.intro}}</p>
-    <small class="main">Posted at {{post.posted_date}}</small>
-    <a class="motto" href="{% url 'post_detail' post.slug %}">もっと読む</a>
-<hr>
-</main>
+<div class="task">
+    <h3 >{{post.title}}</h3>
+    <p class="intro-front">{{post.intro}}</p>
+    <p>期日:{{post.execution_date}}</p>
+    <a class="motto" href="{% url 'post_detail' post.slug %}">詳細</a>
+</div>    
 </body>
-</div>
+
 {% endfor %}
-<footer>
-    <h2 id="mailed">----------お知らせ----------</h2>
-    <hr>
-        <p class="mail">31/JAN/2024  __:__  システム開発の遅れ</p>
-    <hr>
-</footer>
 <footer2>
-    <p class="footer">@TODO App</p>
+    <p class="footer">@To Do</p>
 </footer2>
 {% endblock %}

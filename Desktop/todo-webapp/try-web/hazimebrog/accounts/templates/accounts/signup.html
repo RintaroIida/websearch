@@ -1,18 +1,46 @@
 {% extends 'blog/base.html' %}
 
 {% block title %} アカウント作成 {% endblock %}
-{% block h1 %} アカウント作成{% endblock %}
 {% block content %}
-    <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+<form method="post">
     {% csrf_token %}
-<input type="text" name='username' class="form-control my-4" placeholder="ユーザーID">
-<input type="password" name='password1' class="form-control mt-4"
-placeholder="パスワード">
-<input type="password" name='password2' class="form-control mt-4" placeholder="バスワード確認用">
-<small class="mb-2 d-block text-start">パスワードは8文字以上で設定してください。</small>
-{% if form.errors %}
-<span class="mb-2 small text-danger d-block text-start">利用できないユーザー IDやパスワードの可能性があります。入力内容を再度ご確認ください。</span>
-{% endif %}
-<button type="submit" class="btn btn-success m-2">アカウント作成</button>
+    <h1>会員登録</h1>
+    
+    <div class="sign-form">
+        <label class="sign" for="username">ユーザーID</label>
+        <input type="text" id="username" name="username" placeholder="ユーザーID" required>
+    </div>
+    
+    <div class="sign-form">
+        <label class="sign" for="email">メールアドレス</label>
+        <input type="email" id="email" name="email" placeholder="メールアドレス" required>
+    </div>
+    
+    <div class="sign-form">
+        <label class="sign" for="password1">パスワード</label>
+        <input type="password" id="password1" name="password1" placeholder="パスワード" required>
+    </div>
+    
+    <div class="sign-form">
+        <label class="sign" for="password2">バスワード確認用</label>
+        <input type="password" id="password2" name="password2" placeholder="バスワード確認用" required>
+    </div>
+    
+    <small>パスワードは8文字以上で設定してください。</small>
+    
+    {% if form.errors %}
+        <div class="errors">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ field }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    <button type="submit">アカウント作成</button>
 </form>
+
 {% endblock %}
