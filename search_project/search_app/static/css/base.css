@@ -1,0 +1,79 @@
+/* 固定バーの基本スタイル */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* バーの背景色 */
+    color: #0097b2; /* テキスト色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 少しのシャドウで立体感 */
+    z-index: 1000; /* 他の要素の上に配置 */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color:black;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff9800; /* ホバー時の色 */
+}
+
+/* メインコンテンツのマージン調整 */
+main {
+    margin-top: 60px; /* ヘッダーの高さ分だけマージンを追加 */
+}
+
+/* ハンバーガーメニューのスタイル */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color:black;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.hidden{
+    display: none;
+}
+
+
+/* 検索フォームのスタイル */
+.search-form-container {
+    color: #fff;
+    padding: 15px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    
+}
+
+
+
+

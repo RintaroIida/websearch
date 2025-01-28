@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}サイトタイトル{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/performance.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="nav-container">
+            <div class="site-title">bike</div>
+            <nav class="nav-links">
+                <a href="{% url 'search_view' %}">ホーム</a>
+                <a href="{% url 'performance' %}">車両の各項目について</a>
+                <a href="{% url 'about_site' %}">サイトについて</a>
+            </nav>
+            <!-- ハンバーガーメニュー -->
+            <div class="menu-toggle" id="menuToggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="search-form-container hidden" id="searchForm">
+            <form method="get">
+                {{ form.as_p }}
+                <!-- 名前検索 -->
+                <label for="query">名前検索:</label>
+                <input type="text" name="query" placeholder="商品名を入力してください" value="{{ query }}">
+
+                <!-- メーカー選択 -->
+                <label for="category">メーカー:</label>
+                <select name="category">
+                    <option value="">すべて</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id|stringformat:"i" == selected_category %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+
+
+                <!-- バイクタイプ選択 -->
+                <label for="bike_type">バイクタイプ:</label>
+                <select name="bike_type">
+                    <option value="">すべて</option>
+                    {% for bike_type in bike_types %}
+                        <option value="{{ bike_type.id }}">{{ bike_type.name }}</option>
+                    {% endfor %}
+                </select>
+                
+                <!-- 排気量選択 -->
+                <label for="displacement">排気量:</label>
+                <select name="displacement">
+                    <option value="">すべて</option>
+                    <option value="50">50cc以下</option>
+                    <option value="125">51cc〜125cc</option>
+                    <option value="250">126cc〜250cc</option>
+                    <option value="400">251cc〜400cc</option>
+                    <option value="1000">401cc〜1000cc</option>
+                    <option value="1000plus">1001cc以上</option>
+                </select>
+        
+                <!-- 価格設定 -->
+                <label for="min_price">最低価格:</label>
+                <input type="number" name="min_price" min="0">
+        
+                <label for="max_price">最高価格:</label>
+                <input type="number" name="max_price" min="0">
+
+                
+        
+                <button type="submit">検索</button>
+            </form>
+        </div>
+        
+
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&sear. All Rights Reserved.</p>
+    </footer>
+
+
+</body>
+</html>

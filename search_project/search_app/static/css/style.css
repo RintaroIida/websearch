@@ -1,0 +1,277 @@
+/* ページ全体の基本スタイル */
+body {
+    line-height: 1.6;
+    background-color: #f9f9f9; /* 明るい背景 */
+    color: #333; /* 暗いテキスト色 */
+    margin: 0;
+    padding: 0;
+}
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.pagination a {
+    padding: 8px 14px;
+    color: #333; /* テキスト色を暗めに */
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s;
+    background-color: #fff; /* 明るいボタン背景 */
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
+.pagination .current {
+    padding: 8px 14px;
+    background-color: #ccc;
+    color: #000;
+    border-radius: 8px;
+}
+/* 検索フォーム */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 30px;
+    margin-left:auto;
+    margin-right: 20px;
+    background-color: #f5f5f5; /* 明るい灰色の背景 */
+    border: 1px solid #ccc; /* ボーダーを薄いグレーに */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 少し控えめなシャドウ */
+    max-width: 450px;
+}
+
+form label {
+    font-weight: 500;
+    color: #555; /* 中間色の文字色 */
+}
+
+form input[type="number"],
+form select {
+    padding: 10px;
+    border: 1px solid #aaa; /* ボーダーを少し明るく */
+    background-color: #fff; /* 白背景 */
+    color: #333; /* 黒に近いテキスト */
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #888; /* フォーカス時のボーダーをやや濃いグレーに */
+}
+
+form button[type="submit"] {
+    padding: 12px;
+    background-color: #e0e0e0; /* 明るいグレー */
+    color: #333; /* 濃い文字色 */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #d0d0d0; /* 少し濃いグレー */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* ホバー時に軽いシャドウを追加 */
+}
+
+/* 検索結果リスト */
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+ul li {
+    padding: 15px;
+    background-color: #fff; /* 明るいカード背景 */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+ul li:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* 空の結果リスト */
+ul li:empty {
+    color: #aaa;
+    text-align: center;
+    font-style: italic;
+}
+
+/* カテゴリボタン（リンク）リスト */
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 各カテゴリボタン */
+.category-item {
+    display: block;
+    padding: 12px 25px;
+    background-color: #fff; /* 明るいボタン背景 */
+    color: #333;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    min-width: 120px;
+    flex-basis: 22%;
+    box-sizing: border-box;
+}
+
+.category-item:nth-child(4n) {
+    margin-right: 0;
+}
+
+.category-item:hover {
+    background-color: #f0f0f0; /* 明るいホバー色 */
+    color: #000;
+    transform: translateY(-3px);
+}
+
+.category-item.active:hover {
+    background-color: #ddd;
+    transform: translateY(0);
+}
+
+/* ボタンのレスポンシブ対応 */
+@media (max-width: 768px) {
+    .category-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .category-item {
+        margin-bottom: 10px;
+        min-width: 200px;
+    }
+}
+
+
+
+
+
+
+
+/* 名前空間を追加して既存のCSSと被らないようにする */
+.custom-search-results {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.custom-product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.custom-product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 280px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.custom-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.custom-product-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.custom-product-details {
+    text-align: left;
+}
+
+.custom-product-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.custom-product-price {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.custom-product-specs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-product-specs li {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.no-custom-products {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-top: 20px;
+}
+
+
+.image-container {
+    width: 100%;
+    max-width: 100%;
+    text-align: center; /* 画像を中央揃え */
+}
+
+.slideshow-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    border-radius: 8px; /* 角を少し丸める */
+}
+
+
+

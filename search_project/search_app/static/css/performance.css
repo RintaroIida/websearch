@@ -1,0 +1,40 @@
+/* performance.css */
+
+/* セクションの共通スタイル */
+.performance-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.performance-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #0097b2;  /* タイトル色 */
+    font-weight: bold;
+}
+
+.performance-section p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* ヘッダー */
+h1 {
+    font-size: 2rem;
+    color: #0097b2;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* コンテンツ全体のマージン */
+.content {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}

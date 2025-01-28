@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品一覧</title>
+  <link rel="stylesheet" type= "text/css" href="{% static 'css/product_list.css' %}">
+</head>
+<body class="product-list-page">
+  <header class="header">
+    <h1>{{ category.name }}</h1>
+    <a href="{% url 'search_view' %}" class="product-back">最初の画面に戻る</a>
+  </header>
+
+  <main class="container">
+    {% for product in products %}
+      <div class="product-card">
+        <!-- 画像 -->
+        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+        <!-- 詳細 -->
+        <div class="product-details">
+          <div class="product-header">
+            <h2 class="product-name">{{ product.name }}</h2>
+            <span class="product-price">{{ product.price }}万円</span>
+          </div>
+          <ul class="product-specs">
+            <li>車両重量: {{ product.weight }}kg</li>
+            <li>シート高: {{ product.seatheight }}mm</li>
+            <li>排気量: {{ product.displacement }}cc</li>
+            <li>シリンダー数: {{ product.cylindercount }}気筒</li>
+            <li>馬力: {{ product.horsepower }}hp</li>
+            <li>最大トルク: {{ product.maximumtorque }}N/m</li>
+          </ul>
+          <div class="product-actions">
+            <a href="{% url 'product_update' product.id %}" class="btn btn-edit">編集</a>
+            <form action="{% url 'product_delete' product.id %}" method="POST" onsubmit="return confirm('本当に削除しますか？');" class="delete-form">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-delete">削除</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="no-products">商品がありません。</p>
+    {% endfor %}
+  </main>
+  
+</body>
+</html>
+
+

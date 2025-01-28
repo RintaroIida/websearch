@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+検索ページ
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="image-container">
+    <img src="{% static 'img/topbike.png' %}" alt="Top Bike" class="slideshow-image" id="image1" style="display: block;">
+    <img src="{% static 'img/Reble.png' %}" alt="Reble" class="slideshow-image" id="image2" style="display: none;">
+</div>
+
+
+<div class="category-filter">
+    <h3>メーカーから探す</h3>
+    <div class="category-list">
+        {% for category in categories %}
+            <a href="?category={{ category.id }}" 
+               class="category-item{% if category.id|stringformat:"s" == selected_category %} active{% endif %}">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+<div class="custom-search-results">
+    <h3 class="search-title">検索結果</h3>
+    <div class="custom-product-list">
+        {% for product in page_obj %}
+        <div class="custom-product-card">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="custom-product-image">
+            <div class="custom-product-details">
+                <h2 class="custom-product-name">{{ product.name }}</h2>
+                <p class="custom-product-price">{{ product.price }}万円</p>
+                <ul class="custom-product-specs">
+                    <li>車両重量: {{ product.weight }}kg</li>
+                    <li>シート高: {{ product.seatheight }}mm</li>
+                    <li>排気量: {{ product.displacement }}cc</li>
+                    <li>シリンダー数: {{ product.cylindercount }}気筒</li>
+                    <li>馬力: {{ product.horsepower }}hp</li>
+                    <li>最大トルク: {{ product.maximumtorque }}N/m</li>
+                </ul>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-custom-products">現在、該当する商品はありません。</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="pagination"> 
+    <span class="step-links"> 
+        {% if page_obj.has_previous %} 
+            <a href="?page=1">最初</a>
+            <a href="?page={{ page_obj.previous_page_number }}">前へ</a>  
+        {% endif %} 
+        <span class="current"> 
+            ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }} 
+        </span> 
+        {% if page_obj.has_next %} 
+            <a href="?page={{ page_obj.next_page_number }}">次へ</a>   
+            <a href="?page={{ page_obj.paginator.num_pages }}">最後</a>  
+        {% endif %} 
+    </span> 
+</div> 
+{% endblock %}
+
+
+
+
+<!-- iidarintarou@iidarintarounoMacBook-Air search_project % python3 manage.py shell
+Python 3.9.6 (default, Mar 29 2024, 10:51:09) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.18.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from search_app.models import Category
+
+In [2]: category = Category.objects.create(name="TOYOTA")
+
+In [3]: print(category.id)
+1
+
+In [4]: from search_app.models import Product
+   ...: 
+
+In [5]: Product.objects.create(name="CBR400R", description="てきすとてきすとてきすとてきすと", price=80, category_id=2, horsepower=46, seatheight=785, cylindercount=2, displacement=399,  maximumtorque=38, weight=191) -->
